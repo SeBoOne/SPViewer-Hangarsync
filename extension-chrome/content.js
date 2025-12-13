@@ -83,13 +83,9 @@
 
                 <div id="backup-stats" style="background: #26292c; padding: 14px; border-radius: 6px; margin-bottom: 16px; display: none; border: 1px solid rgba(0, 0, 0, 0.2);">
                     <div style="font-size: 11px; color: rgba(255, 255, 255, 0.5); margin-bottom: 10px; text-transform: uppercase; letter-spacing: 1px; font-weight: 600;">Statistiken</div>
-                    <div style="display: flex; justify-content: space-between; padding: 6px 0; border-bottom: 1px solid rgba(255, 255, 255, 0.08);">
+                    <div style="display: flex; justify-content: space-between; padding: 6px 0;">
                         <span style="font-size: 13px; color: rgba(255, 255, 255, 0.7);">Loadouts:</span>
                         <span id="backup-count" style="font-size: 15px; font-weight: 600; color: #fb8c00;">-</span>
-                    </div>
-                    <div style="display: flex; justify-content: space-between; padding: 6px 0;">
-                        <span style="font-size: 13px; color: rgba(255, 255, 255, 0.7);">Letztes Backup:</span>
-                        <span id="backup-date" style="font-size: 15px; font-weight: 600; color: #fb8c00;">-</span>
                     </div>
                 </div>
 
@@ -254,19 +250,9 @@
         status.textContent = message;
     }
 
-    // Statistiken laden (Chrome API)
+    // Statistiken laden
     async function loadStats() {
-        try {
-            const result = await chrome.storage.local.get('lastBackup');
-            if (result.lastBackup) {
-                const date = new Date(result.lastBackup);
-                panel.querySelector('#backup-date').textContent = date.toLocaleDateString('de-DE');
-            } else {
-                panel.querySelector('#backup-date').textContent = 'Noch nie';
-            }
-        } catch (error) {
-            console.error('Stats error:', error);
-        }
+        // Stats werden nicht mehr gespeichert, um storage Permission zu vermeiden
     }
 
     // Export
@@ -314,9 +300,6 @@
                 document.body.removeChild(a);
                 URL.revokeObjectURL(url);
             }, 100);
-
-            await chrome.storage.local.set({ lastBackup: new Date().toISOString() });
-            await loadStats();
 
             showStatus(`✅ ${allData.length} Loadouts exportiert!`, 'success');
             panel.querySelector('#backup-count').textContent = allData.length;

@@ -11,6 +11,9 @@ node_modules/
 Thumbs.db
 .vscode/
 .idea/
+.claude/
+GITHUB_SETUP.md*
+STORE_SUBMISSION.md*
 
 # Logs
 *.log
