@@ -1,5 +1,7 @@
 # SPViewer HangarSync
 
+# 100% mit AI erstellt.
+
 Browser-Extension zum Sichern und Synchronisieren Ihrer SPViewer Fahrzeug-Loadouts. Einfacher Export und Import aller Schiffsausrüstungen direkt auf [SPViewer.eu](https://www.spviewer.eu).
 
 ## Features
@@ -190,7 +192,7 @@ Beiträge sind willkommen! So können Sie helfen:
 
 ## Changelog
 
-### Version 1.0.0 (2024-12)
+### Version 1.0.0 (2025-12)
 - Erste Veröffentlichung
 - Export/Import Funktionalität
 - Firefox und Chrome Support
