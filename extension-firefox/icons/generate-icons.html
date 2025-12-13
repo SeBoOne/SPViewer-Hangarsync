@@ -70,6 +70,7 @@
             <h3>Vorschau:</h3>
             <canvas id="preview48" width="48" height="48"></canvas>
             <canvas id="preview96" width="96" height="96"></canvas>
+            <canvas id="preview128" width="128" height="128"></canvas>
         </div>
     </div>
 
@@ -99,7 +100,7 @@
             ctx.fill();
 
             // Disketten-Symbol
-            const scale = size / 96;
+            const scale = size / 128;
             const offsetX = size * 0.25;
             const offsetY = size * 0.25;
             const diskWidth = size * 0.5;
@@ -148,6 +149,18 @@
                 URL.revokeObjectURL(url);
             });
 
+            // 128x128 Icon generieren
+            const canvas128 = document.getElementById('preview128');
+            drawIcon(canvas128, 128);
+            canvas128.toBlob(blob => {
+                const url = URL.createObjectURL(blob);
+                const a = document.createElement('a');
+                a.href = url;
+                a.download = 'icon-128.png';
+                a.click();
+                URL.revokeObjectURL(url);
+            });
+
             alert('✅ Icons werden heruntergeladen!\n\nSpeichern Sie sie im Ordner:\nextension/icons/');
         }
 
@@ -155,6 +168,7 @@
         window.onload = function() {
             drawIcon(document.getElementById('preview48'), 48);
             drawIcon(document.getElementById('preview96'), 96);
+            drawIcon(document.getElementById('preview128'), 128);
         };
     </script>
 </body>
