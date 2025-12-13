@@ -1,0 +1,26 @@
+<svg width="96" height="96" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="gradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#667eea;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#764ba2;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+
+  <!-- Hintergrund -->
+  <rect width="96" height="96" rx="16" fill="url(#gradient)"/>
+
+  <!-- Disketten-Symbol -->
+  <g transform="translate(24, 24)">
+    <!-- Diskette -->
+    <rect x="0" y="4" width="48" height="44" rx="4" fill="white" stroke="white" stroke-width="2"/>
+
+    <!-- Oberer Teil (Label) -->
+    <rect x="4" y="8" width="40" height="12" fill="#667eea"/>
+
+    <!-- Metall-Teil unten -->
+    <rect x="12" y="32" width="24" height="12" rx="2" fill="#667eea"/>
+
+    <!-- Schreibschutz -->
+    <rect x="4" y="24" width="8" height="6" rx="1" fill="#764ba2"/>
+  </g>
+</svg>

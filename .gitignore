@@ -1,0 +1,34 @@
+# Browser Extension Build Files
+*.crx
+*.xpi
+*.zip
+*.pem
+web-ext-artifacts/
+
+# Development
+node_modules/
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+
+# Logs
+*.log
+npm-debug.log*
+
+# Temporary files
+*.tmp
+*.bak
+*~
+
+# OS Files
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Desktop.ini
+
+# Playwright
+.playwright-mcp/

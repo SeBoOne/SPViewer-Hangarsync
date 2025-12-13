@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Icon Generator</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            padding: 20px;
+            background: #f5f5f5;
+        }
+        .container {
+            max-width: 600px;
+            margin: 0 auto;
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        h1 {
+            color: #333;
+        }
+        button {
+            background: #667eea;
+            color: white;
+            border: none;
+            padding: 12px 24px;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 16px;
+            margin: 10px 5px;
+        }
+        button:hover {
+            background: #764ba2;
+        }
+        .preview {
+            margin: 20px 0;
+            padding: 20px;
+            background: #f8f9fa;
+            border-radius: 8px;
+        }
+        canvas {
+            border: 1px solid #ddd;
+            margin: 10px;
+        }
+        .instruction {
+            background: #e7f3ff;
+            padding: 15px;
+            border-left: 4px solid #2196F3;
+            border-radius: 4px;
+            margin: 20px 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🎨 SPViewer Extension Icons Generator</h1>
+
+        <div class="instruction">
+            <strong>Anleitung:</strong><br>
+            1. Klicken Sie auf "Icons generieren"<br>
+            2. Die Icons werden als PNG-Dateien heruntergeladen<br>
+            3. Speichern Sie sie im Ordner "extension/icons/"<br>
+            4. Überschreiben Sie die vorhandenen Dateien
+        </div>
+
+        <button onclick="generateIcons()">🎨 Icons generieren</button>
+
+        <div class="preview">
+            <h3>Vorschau:</h3>
+            <canvas id="preview48" width="48" height="48"></canvas>
+            <canvas id="preview96" width="96" height="96"></canvas>
+        </div>
+    </div>
+
+    <script>
+        function drawIcon(canvas, size) {
+            const ctx = canvas.getContext('2d');
+
+            // Gradient Hintergrund
+            const gradient = ctx.createLinearGradient(0, 0, size, size);
+            gradient.addColorStop(0, '#667eea');
+            gradient.addColorStop(1, '#764ba2');
+
+            // Hintergrund mit abgerundeten Ecken
+            const radius = size / 6;
+            ctx.fillStyle = gradient;
+            ctx.beginPath();
+            ctx.moveTo(radius, 0);
+            ctx.lineTo(size - radius, 0);
+            ctx.quadraticCurveTo(size, 0, size, radius);
+            ctx.lineTo(size, size - radius);
+            ctx.quadraticCurveTo(size, size, size - radius, size);
+            ctx.lineTo(radius, size);
+            ctx.quadraticCurveTo(0, size, 0, size - radius);
+            ctx.lineTo(0, radius);
+            ctx.quadraticCurveTo(0, 0, radius, 0);
+            ctx.closePath();
+            ctx.fill();
+
+            // Disketten-Symbol
+            const scale = size / 96;
+            const offsetX = size * 0.25;
+            const offsetY = size * 0.25;
+            const diskWidth = size * 0.5;
+            const diskHeight = size * 0.46;
+
+            // Weiße Diskette
+            ctx.fillStyle = 'white';
+            ctx.fillRect(offsetX, offsetY + diskHeight * 0.09, diskWidth, diskHeight);
+
+            // Oberer Teil (Label)
+            ctx.fillStyle = '#667eea';
+            ctx.fillRect(offsetX + diskWidth * 0.08, offsetY + diskHeight * 0.18, diskWidth * 0.84, diskHeight * 0.27);
+
+            // Metall-Teil unten
+            ctx.fillStyle = '#667eea';
+            const metalY = offsetY + diskHeight * 0.73;
+            ctx.fillRect(offsetX + diskWidth * 0.25, metalY, diskWidth * 0.5, diskHeight * 0.27);
+
+            // Schreibschutz
+            ctx.fillStyle = '#764ba2';
+            ctx.fillRect(offsetX + diskWidth * 0.08, offsetY + diskHeight * 0.55, diskWidth * 0.16, diskHeight * 0.14);
+        }
+
+        function generateIcons() {
+            // 48x48 Icon generieren
+            const canvas48 = document.getElementById('preview48');
+            drawIcon(canvas48, 48);
+            canvas48.toBlob(blob => {
+                const url = URL.createObjectURL(blob);
+                const a = document.createElement('a');
+                a.href = url;
+                a.download = 'icon-48.png';
+                a.click();
+                URL.revokeObjectURL(url);
+            });
+
+            // 96x96 Icon generieren
+            const canvas96 = document.getElementById('preview96');
+            drawIcon(canvas96, 96);
+            canvas96.toBlob(blob => {
+                const url = URL.createObjectURL(blob);
+                const a = document.createElement('a');
+                a.href = url;
+                a.download = 'icon-96.png';
+                a.click();
+                URL.revokeObjectURL(url);
+            });
+
+            alert('✅ Icons werden heruntergeladen!\n\nSpeichern Sie sie im Ordner:\nextension/icons/');
+        }
+
+        // Vorschau beim Laden
+        window.onload = function() {
+            drawIcon(document.getElementById('preview48'), 48);
+            drawIcon(document.getElementById('preview96'), 96);
+        };
+    </script>
+</body>
+</html>
