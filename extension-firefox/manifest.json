@@ -11,10 +11,6 @@
     "96": "icons/icon-96.png"
   },
 
-  "permissions": [
-    "activeTab"
-  ],
-
   "content_scripts": [
     {
       "matches": ["https://www.spviewer.eu/*", "https://spviewer.eu/*"],
