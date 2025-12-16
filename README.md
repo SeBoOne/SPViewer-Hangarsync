@@ -22,7 +22,7 @@ Browser-Extension zum Sichern und Synchronisieren Ihrer SPViewer Fahrzeug-Loadou
 4. Wählen Sie die `extension-firefox` Datei aus
 
 **Oder via Firefox Add-ons Store** (nach Veröffentlichung):
-- [Link wird nach Veröffentlichung hinzugefügt]
+- [SPViewer HangarSync@Mozilla](https://addons.mozilla.org/de/firefox/addon/spviewer-hangarsync/)
 
 ### Chrome / Brave / Edge
 
