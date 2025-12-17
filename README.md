@@ -33,7 +33,7 @@ Browser-Extension zum Sichern und Synchronisieren Ihrer SPViewer Fahrzeug-Loadou
 5. Wählen Sie den `extension-chrome` Ordner aus
 
 **Oder via Chrome Web Store** (nach Veröffentlichung):
-- [Link wird nach Veröffentlichung hinzugefügt]
+- [SPViewer HangarSync@Google](https://chromewebstore.google.com/detail/spviewer-hangarsync/bckedfbdoklndodklepgnlaldhkobjnl)
 
 ## Verwendung
 
